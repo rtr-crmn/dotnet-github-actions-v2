@@ -2,9 +2,9 @@ name: dotnet-core-build
 
 on:
   push:
-    branches: [ exclude ]
-  #pull_request:
-    #branches: [ master ]
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
