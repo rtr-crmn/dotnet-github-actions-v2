@@ -1,0 +1,46 @@
+name: dotnet-core-release-flow
+
+on:
+  push:
+    branches: [ exclude ]
+  #pull_request:
+    #branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "value"
+        required: true
+        default: "default-name"
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - run: ls -la
+    - run: |
+        echo "name: '${{ github.event.inputs.name }}'"
+    - run: env
+    - run: docker ps
+    - run: docker version
+    #- run: find / -name kubectl
+    - run: curl -L -o ${AGENT_TOOLSDIRECTORY}/kind https://kind.sigs.k8s.io/dl/v0.8.1/kind-linux-amd64 && chmod +x ${AGENT_TOOLSDIRECTORY}/kind
+    - run: kind create cluster
+    - run: kubectl cluster-info
+    - run: kubectl get pods -A
+    - run: docker ps
+
+
+    #- uses: actions/checkout@v2
+    #- name: Setup .NET Core
+      #uses: actions/setup-dotnet@v1
+      #with:
+        #dotnet-version: 3.1.301
+    #- name: Install dependencies
+      #run: dotnet restore
+    #- name: Build
+      #run: dotnet build --configuration Release --no-restore
+    #- name: Test
+      #run: dotnet test --no-restore --verbosity normal
