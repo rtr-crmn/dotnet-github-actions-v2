@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: helm setup
-      run: curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz && tar -zxvf helm-v3.3.4-linux-amd64.tar.gz && mv linux-amd64/helm /usr/local/bin/helm
+      run: curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz && tar -zxvf helm-v3.3.4-linux-amd64.tar.gz && sudo mv linux-amd64/helm /usr/local/bin/helm
     - name: helm plugin setup
       run: helm plugin install https://github.com/chartmuseum/helm-push.git
     - name: helm repo add
