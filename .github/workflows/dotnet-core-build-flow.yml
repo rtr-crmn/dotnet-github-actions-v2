@@ -24,8 +24,6 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     
-    - name: helm plugin setup
-      run: helm plugin install https://github.com/chartmuseum/helm-push.git
     - name: helm repo add
       run: helm repo add chart-museum http://chartmuseum:8080
     - name: helm push
