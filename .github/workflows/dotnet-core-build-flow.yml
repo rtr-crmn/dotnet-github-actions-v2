@@ -24,11 +24,11 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: helm setup
-      run: curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz && tar -zxvf helm-v3.3.4-linux-amd64.tar.gz && sudo mv linux-amd64/helm /usr/local/bin/helm
+      run: curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz && tar -zxvf helm-v3.3.4-linux-amd64.tar.gz
     - name: helm plugin setup
-      run: helm plugin install https://github.com/chartmuseum/helm-push.git
+      run: /home/docker/actions-runner/_work/github-actions-service-a/github-actions-service-a/linux-amd64/helm plugin install https://github.com/chartmuseum/helm-push.git
     - name: helm repo add
-      run: helm repo add chart-museum http://chartmuseum:8080
+      run: /home/docker/actions-runner/_work/github-actions-service-a/github-actions-service-a/linux-amd64/helm repo add chart-museum http://chartmuseum:8080
     - name: helm push
-      run: helm push kubernetes/helm/service-a/ chart-museum
+      run: /home/docker/actions-runner/_work/github-actions-service-a/github-actions-service-a/linux-amd64/helm push kubernetes/helm/service-a/ chart-museum
       
