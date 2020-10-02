@@ -25,7 +25,7 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     
     - name: helm repo add
-      run: helm repo add chart-museum http://chartmuseum:8080
+      run: helm-v2 repo add chart-museum http://chartmuseum:8080
     - name: helm push
-      run: helm push kubernetes/helm/service-a/ chart-museum
+      run: helm-v2 push kubernetes/helm/service-a/ chart-museum
       
